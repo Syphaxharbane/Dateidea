@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff4f81">
+  <title>Notre petit date 💕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <main class="app">
+    <section id="question" class="card active">
+      <div class="emoji">💌</div>
+      <p class="eyebrow">J'ai une question importante...</p>
+      <h1>Veux-tu sortir avec moi ? 🥺❤️</h1>
+      <p class="subtitle">Promis, j'ai préparé quelque chose de spécial pour nous deux.</p>
+
+      <div class="buttons" id="buttonsArea">
+        <button id="yesBtn" class="btn yes">OUI ❤️</button>
+        <button id="noBtn" class="btn no">NON 😈</button>
+      </div>
+      <p id="tease" class="tease">Tu es sûre de vouloir dire non ? 👀</p>
+    </section>
+
+    <section id="booking" class="card hidden">
+      <div class="emoji">😍</div>
+      <p class="eyebrow">Je savais que tu allais dire oui !</p>
+      <h2>Alors, choisissons notre date ❤️</h2>
+      <p class="subtitle">Choisis le jour et l'heure qui te conviennent.</p>
+
+      <form id="dateForm">
+        <label>
+          📅 Date
+          <input type="date" id="date" name="date" required>
+        </label>
+
+        <label>
+          🕐 Heure
+          <input type="time" id="time" name="time" required>
+        </label>
+
+        <label>
+          📍 Lieu
+          <input type="text" id="place" name="place" placeholder="Ex. Alger, café, promenade..." required maxlength="100">
+        </label>
+
+        <label>
+          💌 Un petit message (facultatif)
+          <textarea id="message" name="message" rows="3" placeholder="Un petit mot pour moi... 🥰" maxlength="500"></textarea>
+        </label>
+
+        <button class="btn confirm" type="submit" id="confirmBtn">CONFIRMER NOTRE DATE ❤️</button>
+        <p id="formStatus" class="status" role="status"></p>
+      </form>
+    </section>
+
+    <section id="success" class="card hidden">
+      <div class="success-heart">💖</div>
+      <p class="eyebrow">C'est officiel !</p>
+      <h2>Notre date est réservée 😍</h2>
+      <p class="subtitle">Je viens de recevoir tous les détails par e-mail. ❤️</p>
+      <div id="summary" class="summary"></div>
+      <p class="final-message">J'ai déjà hâte de te voir 🥹💕</p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

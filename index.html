@@ -1,73 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ff4f81">
-  <title>Notre petit date 💕</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Une petite question... 💌</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="hearts" aria-hidden="true"></div>
 
-  <main class="app">
-    <section id="question" class="card active">
-      <div class="emoji">💌</div>
-      <p class="eyebrow">J'ai une question importante...</p>
-      <h1>Veux-tu sortir avec moi ? 🥺❤️</h1>
-      <p class="subtitle">Promis, j'ai préparé quelque chose de spécial pour nous deux.</p>
+<div class="hearts-bg" id="heartsBg"></div>
 
-      <div class="buttons" id="buttonsArea">
-        <button id="yesBtn" class="btn yes">OUI ❤️</button>
-        <button id="noBtn" class="btn no">NON 😈</button>
+<div class="container">
+
+  <!-- PAGE 1 : LA QUESTION -->
+  <section id="page1" class="page active">
+    <div class="card">
+      <div class="emoji big-emoji">💌</div>
+      <p class="intro">J'ai une petite question pour toi…</p>
+      <h1>Tu veux sortir avec moi ? 😍</h1>
+      <p class="subtitle">Promis, ça pourrait être un très joli moment à deux. ❤️</p>
+
+      <div class="buttons-zone" id="buttonsZone">
+        <button id="yesBtn" class="btn btn-yes">OUI ❤️</button>
+        <button id="noBtn" class="btn btn-no">NON 😭</button>
       </div>
-      <p id="tease" class="tease">Tu es sûre de vouloir dire non ? 👀</p>
-    </section>
 
-    <section id="booking" class="card hidden">
-      <div class="emoji">😍</div>
-      <p class="eyebrow">Je savais que tu allais dire oui !</p>
-      <h2>Alors, choisissons notre date ❤️</h2>
-      <p class="subtitle">Choisis le jour et l'heure qui te conviennent.</p>
+      <p id="teaseMsg" class="tease-msg"></p>
+    </div>
+  </section>
+
+  <!-- PAGE 2 : CHOIX DE LA DATE -->
+  <section id="page2" class="page">
+    <div class="card">
+      <div class="emoji big-emoji">🥰</div>
+      <h1>Je savais que tu dirais oui !</h1>
+      <p class="subtitle">Choisissons notre date 💕</p>
+      <p class="hint">Choisis le jour et l'heure qui te conviennent.</p>
 
       <form id="dateForm">
-        <label>
-          📅 Date
-          <input type="date" id="date" name="date" required>
-        </label>
+        <div class="field">
+          <label for="dateInput">📅 Date</label>
+          <input type="date" id="dateInput" required>
+        </div>
 
-        <label>
-          🕐 Heure
-          <input type="time" id="time" name="time" required>
-        </label>
+        <div class="field">
+          <label for="timeInput">⏰ Heure</label>
+          <input type="time" id="timeInput" required>
+        </div>
 
-        <label>
-          📍 Lieu
-          <input type="text" id="place" name="place" placeholder="Ex. Alger, café, promenade..." required maxlength="100">
-        </label>
+        <div class="field">
+          <label for="messageInput">💌 Un petit message (facultatif)</label>
+          <textarea id="messageInput" maxlength="500" rows="4" placeholder="Écris-moi quelque chose de doux..."></textarea>
+          <span class="char-count"><span id="charCount">0</span>/500</span>
+        </div>
 
-        <label>
-          💌 Un petit message (facultatif)
-          <textarea id="message" name="message" rows="3" placeholder="Un petit mot pour moi... 🥰" maxlength="500"></textarea>
-        </label>
+        <p id="formError" class="form-error"></p>
 
-        <button class="btn confirm" type="submit" id="confirmBtn">CONFIRMER NOTRE DATE ❤️</button>
-        <p id="formStatus" class="status" role="status"></p>
+        <button type="submit" class="btn btn-confirm" id="confirmBtn">Confirmer notre date ❤️</button>
       </form>
-    </section>
+    </div>
+  </section>
 
-    <section id="success" class="card hidden">
-      <div class="success-heart">💖</div>
-      <p class="eyebrow">C'est officiel !</p>
-      <h2>Notre date est réservée 😍</h2>
-      <p class="subtitle">Je viens de recevoir tous les détails par e-mail. ❤️</p>
-      <div id="summary" class="summary"></div>
-      <p class="final-message">J'ai déjà hâte de te voir 🥹💕</p>
-    </section>
-  </main>
+  <!-- PAGE 3 : CONFIRMATION -->
+  <section id="page3" class="page">
+    <div class="card">
+      <div class="emoji big-emoji pulse">💖</div>
+      <h1>Date confirmé ! 🎉</h1>
+      <p class="subtitle">C'est officiel. J'ai reçu ton choix et je garde cette date précieusement. 🥹❤️</p>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+      <div class="summary">
+        <p>📅 Date : <span id="sumDate"></span></p>
+        <p>⏰ Heure : <span id="sumTime"></span></p>
+        <p>💌 Message : <span id="sumMessage"></span></p>
+      </div>
+
+      <p class="final-msg">J'ai hâte de te voir. 💕</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- Overlay de chargement -->
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="spinner"></div>
+  <p>Envoi en cours...</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

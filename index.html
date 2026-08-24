@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notre date ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+  <div id="heartsBg" aria-hidden="true"></div>
+
+  <main>
+    <section id="page1" class="page active">
+      <div class="card">
+        <div class="emoji">💌</div>
+        <h1>Tu veux sortir avec moi ? ❤️</h1>
+        <p>Une petite question importante… 🥺</p>
+
+        <div id="buttonsZone" class="buttons">
+          <button id="yesBtn" class="btn yes">OUI ❤️</button>
+          <button id="noBtn" class="btn no">NON 🙈</button>
+        </div>
+
+        <p id="teaseMsg" class="tease"></p>
+      </div>
+    </section>
+
+    <section id="page2" class="page">
+      <div class="card">
+        <div class="emoji">🥰</div>
+        <h1>Elle a dit OUI ! ❤️</h1>
+        <p>Choisis maintenant notre date parfaite.</p>
+
+        <form id="dateForm" novalidate>
+          <label for="dateInput">📅 Date</label>
+          <input id="dateInput" type="date" required>
+
+          <label for="timeInput">⏰ Heure</label>
+          <input id="timeInput" type="time" required>
+
+          <label for="messageInput">💌 Un petit message</label>
+          <textarea id="messageInput" maxlength="300" placeholder="Écris quelque chose de mignon..."></textarea>
+          <div class="counter"><span id="charCount">0</span>/300</div>
+
+          <p id="formError" class="error" role="alert"></p>
+
+          <button id="confirmBtn" class="btn confirm" type="submit">Confirmer notre date 💕</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="page3" class="page">
+      <div class="card">
+        <div class="emoji">❤️</div>
+        <h1>C'est confirmé ! 🥰</h1>
+        <p>Notre date est officiellement prévue !</p>
+
+        <div class="summary">
+          <p>📅 <strong>Date :</strong> <span id="sumDate"></span></p>
+          <p>⏰ <strong>Heure :</strong> <span id="sumTime"></span></p>
+          <p>💌 <strong>Message :</strong> <span id="sumMessage"></span></p>
+        </div>
+
+        <p class="final">J'ai hâte de te voir 😍</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="loadingOverlay" class="loading">
+    <div class="spinner"></div>
+    <p>Envoi en cours… 💌</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Une petite question... 💌</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hearts-bg" id="heartsBg"></div>
+
+<div class="container">
+
+  <!-- PAGE 1 : LA QUESTION -->
+  <section id="page1" class="page active">
+    <div class="card">
+      <div class="emoji big-emoji">💌</div>
+      <p class="intro">J'ai une petite question pour toi…</p>
+      <h1>Tu veux sortir avec moi ? 😍</h1>
+      <p class="subtitle">Promis, ça pourrait être un très joli moment à deux. ❤️</p>
+
+      <div class="buttons-zone" id="buttonsZone">
+        <button id="yesBtn" class="btn btn-yes">OUI ❤️</button>
+        <button id="noBtn" class="btn btn-no">NON 😭</button>
+      </div>
+
+      <p id="teaseMsg" class="tease-msg"></p>
+    </div>
+  </section>
+
+  <!-- PAGE 2 : CHOIX DE LA DATE -->
+  <section id="page2" class="page">
+    <div class="card">
+      <div class="emoji big-emoji">🥰</div>
+      <h1>Je savais que tu dirais oui !</h1>
+      <p class="subtitle">Choisissons notre date 💕</p>
+      <p class="hint">Choisis le jour et l'heure qui te conviennent.</p>
+
+      <form id="dateForm">
+        <div class="field">
+          <label for="dateInput">📅 Date</label>
+          <input type="date" id="dateInput" required>
+        </div>
+
+        <div class="field">
+          <label for="timeInput">⏰ Heure</label>
+          <input type="time" id="timeInput" required>
+        </div>
+
+        <div class="field">
+          <label for="messageInput">💌 Un petit message (facultatif)</label>
+          <textarea id="messageInput" maxlength="500" rows="4" placeholder="Écris-moi quelque chose de doux..."></textarea>
+          <span class="char-count"><span id="charCount">0</span>/500</span>
+        </div>
+
+        <p id="formError" class="form-error"></p>
+
+        <button type="submit" class="btn btn-confirm" id="confirmBtn">Confirmer notre date ❤️</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- PAGE 3 : CONFIRMATION -->
+  <section id="page3" class="page">
+    <div class="card">
+      <div class="emoji big-emoji pulse">💖</div>
+      <h1>Date confirmé ! 🎉</h1>
+      <p class="subtitle">C'est officiel. J'ai reçu ton choix et je garde cette date précieusement. 🥹❤️</p>
+
+      <div class="summary">
+        <p>📅 Date : <span id="sumDate"></span></p>
+        <p>⏰ Heure : <span id="sumTime"></span></p>
+        <p>💌 Message : <span id="sumMessage"></span></p>
+      </div>
+
+      <p class="final-msg">J'ai hâte de te voir. 💕</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- Overlay de chargement -->
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="spinner"></div>
+  <p>Envoi en cours...</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
